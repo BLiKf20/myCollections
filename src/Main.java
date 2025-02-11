@@ -1,3 +1,5 @@
+import exceptions.MyQueueException;
+
 import java.util.Queue;
 
 public class Main {
@@ -15,9 +17,12 @@ public class Main {
 
         System.out.println();
         System.out.println("Извлекаем два элемента из очереди:");
-        myQueue.get();
-        myQueue.get();
-
+        try {
+            myQueue.get();
+            myQueue.get();
+        }catch (MyQueueException e){
+            e.getMessage();
+        }
         System.out.println("Теперь наша очередь выглядит так:");
         myQueue.print();
 
