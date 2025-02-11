@@ -1,9 +1,6 @@
 import exceptions.MyQueueException;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-
-public class MyQueue<E> {
+public class MyQueue<E>{
     private ListNode<E> begin = null;
     private ListNode<E> end = null;
 
