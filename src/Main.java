@@ -14,7 +14,7 @@ public class Main {
         myQueue.print();
 
         System.out.println();
-        System.out.println("Извлекаем два элемента из очереди:");
+        System.out.println("Извлекаем два элемента из начала очереди:");
         myQueue.get();
         myQueue.get();
 

@@ -9,11 +9,6 @@ public class MyQueue<E> {
 
     }
 
-    public MyQueue(ListNode<E> begin, ListNode<E> end) {
-        this.begin = begin;
-        this.end = end;
-    }
-
     private class ListNode<E> {
         private E val;
         private ListNode next;
