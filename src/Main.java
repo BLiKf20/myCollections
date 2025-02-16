@@ -10,11 +10,12 @@ public class Main {
 
         MyList myList;
 
-        System.out.println("Введите номер коллекции с которой хотите работать");
+        System.out.println("Введите коллекцию с которой хотите работать:");
         System.out.println("0 - MyQueue");
         System.out.println("1 - MyStack");
         System.out.println("2 - MyLinkedList");
         System.out.println("3 - MyArrayList");
+        System.out.println("4 - Выход из программы");
         System.out.println();
 
         int type;
@@ -22,22 +23,27 @@ public class Main {
             String input = scanner.next();
             try {
                 type = Integer.parseInt(input);
-                if (type < 1 || type > 3) { // для очереди под цифрой 0 нужно будет реализовать свой интерфейс
+                if (type < 1 || type > 4) { // для очереди под цифрой 0 нужно будет реализовать свой интерфейс
                     throw new NumberFormatException();
                 }
                 break;
             } catch (NumberFormatException | InputMismatchException e) {
-                System.out.println("Введите допустимое число от 0 до 3");
+                System.out.println("Введите допустимое число от 0 до 4");
                 System.out.println("0 - MyQueue");
                 System.out.println("1 - MyStack");
                 System.out.println("2 - MyLinkedList");
                 System.out.println("3 - MyArrayList");
+                System.out.println("4 - Выход из программы");
                 System.out.println();
             }
         }
 
+        if (type == 4) {
+            System.exit(0);
+        }
+
         MyListCreatorFactory myListCreatorFactory = new MyListCreatorFactory();
-        MyList list = myListCreatorFactory.createList(type);
+        myList = myListCreatorFactory.createList(type);
 
 
 
