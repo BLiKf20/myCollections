@@ -7,7 +7,7 @@ public class MyStack<E> extends MyList<E>{
     public MyStack() {
         stack = (E[]) new Object[10]; // по умолчанию создается стек на 10 элементов
         top = -1;
-        System.out.println("Создан стек по умолчанрию на 10 элементов");
+        System.out.println("Создан стек по умолчанию на 10 элементов");
     }
 
     public MyStack(int size) {
@@ -22,12 +22,12 @@ public class MyStack<E> extends MyList<E>{
     }
 
     public E pop() throws StackException {
-        if (top == -1) throw new StackException("Попытка извлечь из пустого стека!");
+        if (isEmpty()) throw new StackException("Попытка извлечь из пустого стека!");
         return stack[top--];
     }
 
     public void print() {
-        if (top == -1) {
+        if (isEmpty()) {
             System.out.println("Стек пуст");
             return;
         }
@@ -37,6 +37,12 @@ public class MyStack<E> extends MyList<E>{
         System.out.println();
     }
 
+    @Override
+    boolean isEmpty() {
+        return top == -1;
+    }
+
+    @Override
     public void clear() {
         top = -1;
     }

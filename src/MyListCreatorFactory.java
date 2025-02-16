@@ -4,8 +4,8 @@ public class MyListCreatorFactory {
 
         switch(type){
             case 1 -> list = new MyStack();
-            case 2 -> list = new MyLinkedList();
-            case 3 -> list = new MyArrayList();
+            //case 2 -> list = new MyLinkedList();
+            //case 3 -> list = new MyArrayList();
         }
 
         System.out.println("Ваша коллекция - " + list.getClass());
