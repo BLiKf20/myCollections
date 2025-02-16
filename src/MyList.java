@@ -1,4 +1,4 @@
-public class MyList<E> {
+public abstract class MyList<E> {
     void add(E e) {
         //добавить элемент
     }
