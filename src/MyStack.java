@@ -1,19 +1,20 @@
 import exceptions.StackException;
 
-public class MyStack {
-    private char[] stack;
+public class MyStack<E> {
+    private E[] stack;
     private int top;
+
     public MyStack(int size) {
-        stack = new char[size];
+        stack = (E[]) new Object[size];
         top = -1;
     }
 
-    public void push(char c) throws StackException {
+    public void push(E e) throws StackException {
         if (top == stack.length - 1) throw new StackException("Стек заполнен!");
-        stack[++top] = c;
+        stack[++top] = e;
     }
 
-    public char pop() throws StackException {
+    public E pop() throws StackException {
         if (top == -1) throw new StackException("Попытка извлечь из пустого стека!");
         return stack[top--];
     }
