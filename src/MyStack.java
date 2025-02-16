@@ -1,25 +1,33 @@
 import exceptions.StackException;
 
-public class MyStack {
-    private char[] stack;
+public class MyStack<E> extends MyList<E>{
+    private E[] stack;
     private int top;
-    public MyStack(int size) {
-        stack = new char[size];
+
+    public MyStack() {
+        stack = (E[]) new Object[10]; // по умолчанию создается стек на 10 элементов
         top = -1;
+        System.out.println("Создан стек по умолчанию на 10 элементов");
     }
 
-    public void push(char c) throws StackException {
+    public MyStack(int size) {
+        stack = (E[]) new Object[size];
+        top = -1;
+        System.out.println("Создан стек на " + size + " элементов");
+    }
+
+    public void push(E e) throws StackException {
         if (top == stack.length - 1) throw new StackException("Стек заполнен!");
-        stack[++top] = c;
+        stack[++top] = e;
     }
 
-    public char pop() throws StackException {
-        if (top == -1) throw new StackException("Попытка извлечь из пустого стека!");
+    public E pop() throws StackException {
+        if (isEmpty()) throw new StackException("Попытка извлечь из пустого стека!");
         return stack[top--];
     }
 
     public void print() {
-        if (top == -1) {
+        if (isEmpty()) {
             System.out.println("Стек пуст");
             return;
         }
@@ -29,6 +37,12 @@ public class MyStack {
         System.out.println();
     }
 
+    @Override
+    boolean isEmpty() {
+        return top == -1;
+    }
+
+    @Override
     public void clear() {
         top = -1;
     }

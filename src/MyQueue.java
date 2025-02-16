@@ -1,7 +1,6 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
+import exceptions.MyQueueException;
 
-public class MyQueue<E> {
+public class MyQueue<E>{
     private ListNode<E> begin = null;
     private ListNode<E> end = null;
 
@@ -38,8 +37,10 @@ public class MyQueue<E> {
         end = node; //указатель конца передвинуть на новый элемент
     }
 
-    public E get() {
-        if (begin == null) return null; // если пустой список
+    public E get() throws MyQueueException {
+        if (begin == null) {
+            throw new MyQueueException("Очередь пуста"); // если пустой список
+        }
         E tmp = begin.val; //делаем копию данных
         begin = begin.next; //начало - на следующий элемент
         //прежний первый элемент подберет сборщик мусора
