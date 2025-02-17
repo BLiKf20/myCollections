@@ -45,7 +45,7 @@ public class Main {
         MyListCreatorFactory myListCreatorFactory = new MyListCreatorFactory();
         myList = myListCreatorFactory.createList(type);
 
-
+        myListCreatorFactory.test(); // запускаем тестирование нашего ArrayList
 
         /*MyQueue<Integer> myQueue = new MyQueue<>();
         myQueue.add(1);

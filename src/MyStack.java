@@ -1,6 +1,6 @@
-import exceptions.StackException;
+import exceptions.MyStackException;
 
-public class MyStack<E> extends MyList<E>{
+/*public class MyStack<E> extends MyList<E>{
     private E[] stack;
     private int top;
 
@@ -16,13 +16,13 @@ public class MyStack<E> extends MyList<E>{
         System.out.println("Создан стек на " + size + " элементов");
     }
 
-    public void push(E e) throws StackException {
-        if (top == stack.length - 1) throw new StackException("Стек заполнен!");
+    public void push(E e) throws MyStackException {
+        if (top == stack.length - 1) throw new MyStackException("Стек заполнен!");
         stack[++top] = e;
     }
 
-    public E pop() throws StackException {
-        if (isEmpty()) throw new StackException("Попытка извлечь из пустого стека!");
+    public E pop() throws MyStackException {
+        if (isEmpty()) throw new MyStackException("Попытка извлечь из пустого стека!");
         return stack[top--];
     }
 
@@ -46,4 +46,4 @@ public class MyStack<E> extends MyList<E>{
     public void clear() {
         top = -1;
     }
-}
+}*/
