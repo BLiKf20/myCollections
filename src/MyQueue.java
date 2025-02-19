@@ -1,4 +1,4 @@
-import exceptions.MyQueueException;
+import exceptions.MyCollectionsException;
 
 public class MyQueue<E>{
     private ListNode<E> begin = null;
@@ -27,6 +27,7 @@ public class MyQueue<E>{
     }
 
     public void add(E el) { //добавляем в конец очереди
+        System.out.println("Добавляем в конец очереди: " + el);
         ListNode<E> node = new ListNode<>(el, null); //создаем последний элемент с нулевой ссылкой
         if (end == null) { //список был пуст
             end = node; //обе ссылки на этот элемент
@@ -37,9 +38,14 @@ public class MyQueue<E>{
         end = node; //указатель конца передвинуть на новый элемент
     }
 
-    public E get() throws MyQueueException {
+    public E get() {
+        System.out.println("Получить элемент из очереди");
         if (begin == null) {
-            throw new MyQueueException("Очередь пуста"); // если пустой список
+            try {
+                throw new MyCollectionsException("Очередь пустая"); // если пустой список
+            } catch (MyCollectionsException e) {
+                throw new RuntimeException(e);
+            }
         }
         E tmp = begin.val; //делаем копию данных
         begin = begin.next; //начало - на следующий элемент
@@ -61,8 +67,9 @@ public class MyQueue<E>{
     }
 
     public void print() { //печать очереди от начала к концу
+        System.out.println("Печать очереди от начала к концу");
         if (begin == null) {
-            System.out.println("Queue is empty");
+            System.out.println("Очередь пустая");
             return;
         }
         ListNode item = begin;
@@ -74,6 +81,7 @@ public class MyQueue<E>{
     }
 
     public void clear() { //очистка очереди
+        System.out.println("Очистка очереди");
         begin = null;
         end = null;
         //все элементы списка соберет сборщик мусора, поскольку к ним потерян доступ

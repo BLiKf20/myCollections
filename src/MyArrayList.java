@@ -1,4 +1,4 @@
-import exceptions.MyArrayListExceptions;
+import exceptions.MyCollectionsException;
 
 public class MyArrayList<E> extends MyList<E>{
 
@@ -17,6 +17,7 @@ public class MyArrayList<E> extends MyList<E>{
 
     @Override
     void add(E e) {
+        System.out.println("Добавляем элемент в коллекцию: " + e);
         if (top >= size) {
             list = extArr();
             size = list.length;
@@ -24,8 +25,8 @@ public class MyArrayList<E> extends MyList<E>{
         list[top++] = e;
     }
 
-    @Override
     void add(int index, E e) {
+        System.out.println("Добавляем элемент " + e + " в коллекцию по индексу: " + index);
         if (top >= size){
             list = extArr();
             size = list.length;
@@ -37,22 +38,23 @@ public class MyArrayList<E> extends MyList<E>{
 
     @Override
     void remove() {
+        System.out.println("Удаляем элемент из коллекции");
         if (isEmpty()){
             try {
-                throw new MyArrayListExceptions("Вы пытаетесь удалить из пустой коллекции!");
-            } catch (MyArrayListExceptions e) {
+                throw new MyCollectionsException("Вы пытаетесь удалить из пустой коллекции!");
+            } catch (MyCollectionsException e) {
                 throw new RuntimeException(e);
             }
         }
         list[--top] = null;
     }
 
-    @Override
     void remove(int index) {
+        System.out.println("Удаляем элемент из коллекции по индексу " + index);
         if (index > top) {
             try {
-                throw new MyArrayListExceptions("Элемента с таким индексом не существует");
-            } catch (MyArrayListExceptions e) {
+                throw new MyCollectionsException("Элемента с таким индексом в коллекции не существует");
+            } catch (MyCollectionsException e) {
                 throw new RuntimeException(e);
             }
         }
@@ -62,6 +64,7 @@ public class MyArrayList<E> extends MyList<E>{
 
     @Override
     void clear() {
+        System.out.println("Очищаем коллекцию");
         int temp = top;
         for (int i = 0; i < temp; i++) {
             list[i] = null;
@@ -77,10 +80,11 @@ public class MyArrayList<E> extends MyList<E>{
 
     @Override
     int size() {
+        System.out.println("Размер коллекции" + size);
         return size;
     }
 
-    private E[] extArr(){
+    private E[] extArr(){ // метод для расширения нашего массива
         E[] temp = (E[]) new Object[(int) (size * 1.5 + 1)]; // временный массив
         System.arraycopy(list,0,temp,0, list.length);
         return temp;
